@@ -10,8 +10,11 @@ const schedule = [
 
 export default function DailyProgramSection() {
     return (
-        <section className="h-dvh w-full snap-start flex items-center justify-center bg-zinc-950 px-6 lg:px-24 py-12">
-            <div className="w-full max-w-7xl flex flex-col lg:flex-row gap-12 lg:gap-24 h-full lg:h-auto items-center">
+        <section className="h-full w-full flex items-center justify-center bg-zinc-950 px-4 lg:px-24 py-12 lg:py-0 overflow-hidden relative">
+            {/* Mobile Navbar Spacer */}
+            <div className="absolute top-0 left-0 w-full h-20 lg:hidden pointer-events-none" />
+
+            <div className="w-full max-w-7xl flex flex-col lg:flex-row gap-6 lg:gap-24 h-full lg:h-auto items-center justify-center pt-8 lg:pt-0">
 
                 {/* Visual Side (Left on Desktop) */}
                 <div className="hidden lg:flex flex-col gap-6 w-1/2">
@@ -20,22 +23,21 @@ export default function DailyProgramSection() {
                 </div>
 
                 {/* Content Side */}
-                <div className="w-full lg:w-1/2 flex flex-col justify-center h-full">
-                    <div className="mb-8">
-                        <h2 className="text-4xl lg:text-6xl font-bold mb-4">Daily Program</h2>
-                        <p className="text-white/60 text-sm">
-                            All regular events start at 7 PM.<br />
-                            Free entry. Entry to Nuanu with deposit.
+                <div className="w-full lg:w-1/2 flex flex-col justify-center h-full max-h-[85vh] lg:max-h-none">
+                    <div className="mb-2 lg:mb-8 text-center lg:text-left shrink-0">
+                        <h2 className="text-2xl lg:text-6xl font-bold mb-2 lg:mb-4">Daily Program</h2>
+                        <p className="text-white/60 text-xs lg:text-sm">
+                            Starts at 7 PM. Free entry.
                         </p>
                     </div>
 
-                    <div className="space-y-4 lg:space-y-2 overflow-y-auto lg:overflow-visible pr-2 custom-scrollbar">
+                    <div className="flex-1 overflow-y-auto lg:overflow-visible pr-1 custom-scrollbar space-y-2 lg:space-y-2">
                         {schedule.map((item, index) => (
-                            <div key={index} className="flex flex-col lg:flex-row lg:items-center py-3 border-b border-white/10 hover:border-white/30 transition-colors group">
-                                <span className="text-amber-500 font-semibold w-32 shrink-0">{item.day}</span>
+                            <div key={index} className="flex flex-col lg:flex-row lg:items-center py-2 lg:py-3 border-b border-white/10 hover:border-white/30 transition-colors group">
+                                <span className="text-amber-500 font-semibold text-sm lg:text-base w-32 shrink-0">{item.day}</span>
                                 <div>
-                                    <h3 className="text-lg font-bold group-hover:text-amber-500 transition-colors">{item.title}</h3>
-                                    <p className="text-white/50 text-sm">{item.description}</p>
+                                    <h3 className="text-base lg:text-lg font-bold group-hover:text-amber-500 transition-colors">{item.title}</h3>
+                                    <p className="text-white/50 text-xs lg:text-sm leading-tight">{item.description}</p>
                                 </div>
                             </div>
                         ))}

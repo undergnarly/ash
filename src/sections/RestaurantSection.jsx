@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, ChevronLeft, ChevronRight } from 'lucide-react';
+import { X, ChevronLeft, ChevronRight, ZoomIn } from 'lucide-react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation, Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/navigation';
 
@@ -14,75 +14,96 @@ const menuImages = [
 ];
 
 export default function RestaurantSection() {
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+    const [lightboxIndex, setLightboxIndex] = useState(null);
+
+    const openLightbox = (index) => setLightboxIndex(index);
+    const closeLightbox = () => setLightboxIndex(null);
 
     return (
-        <section className="relative h-dvh w-full snap-start flex items-center justify-center overflow-hidden">
+        <section className="relative h-full w-full flex flex-col items-center justify-center overflow-hidden bg-black/90">
             {/* Background Image */}
-            <div className="absolute inset-0">
-                <img src="/images/ash-03.webp" alt="Restaurant Background" className="w-full h-full object-cover brightness-50" />
-                {/* Note: User request implied extract specific image, assumed generic or from list. 'food-and-drink.webp' was in extracted list? checking... ash-03 looks good for now or extract if critical. */}
-                {/* Re-checking extracted list: 'menu-1.webp' etc are menu. 'bg-2.svg' is bg. 'ash-01' etc are hero. 'Controls.js' etc. */}
-                {/* The original site had 'https://ashnuanu.com/images/food-and-drink.webp' inline. I might not have extracted it if it wasn't in the dl list. */}
-                {/* I will use one of the ash images for now or a solid color if preferred, but ash-03 is nice. */}
+            <div className="absolute inset-0 z-0">
+                <img src="/images/ash-03.webp" alt="Restaurant Background" className="w-full h-full object-cover brightness-[0.3] blur-sm scale-110" />
             </div>
 
-            <div className="relative z-10 text-center px-6">
-                <h2 className="text-6xl lg:text-[10rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 mb-8 leading-none">
-                    RESTAURANT
-                </h2>
-                <p className="text-xl lg:text-3xl font-light mb-12 max-w-2xl mx-auto">
-                    Signature fusion dishes by our chef, only at Ash.
-                </p>
-                <button
-                    onClick={() => setIsMenuOpen(true)}
-                    className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-amber-400 transition-colors text-lg tracking-wide"
-                >
-                    VIEW MENU
-                </button>
+            <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-24 flex flex-col items-center justify-center h-full pt-16 lg:pt-0">
+                <div className="text-center mb-8 lg:mb-12">
+                    <h2 className="text-5xl lg:text-[8rem] font-bold text-transparent bg-clip-text bg-gradient-to-b from-white to-white/50 mb-4 lg:mb-8 leading-none">
+                        RESTAURANT
+                    </h2>
+                    <p className="text-lg lg:text-2xl font-light max-w-2xl mx-auto text-white/80">
+                        Signature fusion dishes by our chef.
+                    </p>
+                </div>
+
+                {/* Inline Gallery */}
+                <div className="w-full max-w-4xl relative">
+                    <Swiper
+                        modules={[Navigation, Autoplay]}
+                        spaceBetween={15}
+                        slidesPerView={1.5}
+                        centeredSlides={true}
+                        loop={true}
+                        autoplay={{ delay: 3000, disableOnInteraction: false }}
+                        breakpoints={{
+                            640: { slidesPerView: 2.5, spaceBetween: 20 },
+                            1024: { slidesPerView: 3, spaceBetween: 30, centeredSlides: false }
+                        }}
+                        className="w-full py-4 px-2"
+                    >
+                        {menuImages.map((img, idx) => (
+                            <SwiperSlide key={idx} className="group cursor-pointer" onClick={() => openLightbox(idx)}>
+                                <div className="relative aspect-[3/4] rounded-xl overflow-hidden shadow-lg border border-white/10 transition-transform duration-300 group-hover:-translate-y-2">
+                                    <img src={img} alt={`Menu ${idx + 1}`} className="w-full h-full object-cover" />
+                                    <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+                                        <ZoomIn className="text-white w-8 h-8" />
+                                    </div>
+                                </div>
+                            </SwiperSlide>
+                        ))}
+                    </Swiper>
+                </div>
             </div>
 
-            {/* Menu Modal */}
+            {/* Fullscreen Lightbox */}
             <AnimatePresence>
-                {isMenuOpen && (
+                {lightboxIndex !== null && (
                     <motion.div
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4 lg:p-12"
+                        className="fixed inset-0 z-[100] bg-black/98 flex items-center justify-center p-4"
                     >
                         <button
-                            onClick={() => setIsMenuOpen(false)}
-                            className="absolute top-6 right-6 lg:top-12 lg:right-12 text-white/50 hover:text-white z-50 p-2"
+                            onClick={closeLightbox}
+                            className="absolute top-6 right-6 text-white/70 hover:text-white z-50 p-2"
                         >
-                            <X size={48} />
+                            <X size={40} />
                         </button>
 
-                        <div className="w-full max-w-5xl h-[80vh] relative">
+                        <div className="w-full h-full flex items-center justify-center">
                             <Swiper
                                 modules={[Navigation]}
+                                initialSlide={lightboxIndex}
                                 navigation={{
-                                    nextEl: '.menu-next',
-                                    prevEl: '.menu-prev',
+                                    nextEl: '.lightbox-next',
+                                    prevEl: '.lightbox-prev',
                                 }}
-                                spaceBetween={30}
+                                spaceBetween={40}
                                 slidesPerView={1}
-                                breakpoints={{ 640: { slidesPerView: 2 }, 1024: { slidesPerView: 3 } }}
-                                className="h-full"
+                                className="h-full w-full"
                             >
                                 {menuImages.map((img, idx) => (
-                                    <SwiperSlide key={idx} className="flex items-center justify-center h-full">
-                                        <div className="relative h-full w-full rounded-2xl overflow-hidden shadow-2xl bg-white/5">
-                                            <img src={img} alt={`Menu Page ${idx + 1}`} className="w-full h-full object-contain" />
-                                        </div>
+                                    <SwiperSlide key={idx} className="flex items-center justify-center h-full p-4">
+                                        <img src={img} alt={`Menu Full ${idx + 1}`} className="max-w-full max-h-full object-contain drop-shadow-2xl" />
                                     </SwiperSlide>
                                 ))}
                             </Swiper>
 
-                            <button className="menu-prev absolute left-0 top-1/2 -translate-y-1/2 -translate-x-full pr-4 z-20 text-white/50 hover:text-white hidden lg:block">
+                            <button className="lightbox-prev absolute left-4 lg:left-12 top-1/2 -translate-y-1/2 z-50 text-white/50 hover:text-white transition-colors">
                                 <ChevronLeft size={48} />
                             </button>
-                            <button className="menu-next absolute right-0 top-1/2 -translate-y-1/2 translate-x-full pl-4 z-20 text-white/50 hover:text-white hidden lg:block">
+                            <button className="lightbox-next absolute right-4 lg:right-12 top-1/2 -translate-y-1/2 z-50 text-white/50 hover:text-white transition-colors">
                                 <ChevronRight size={48} />
                             </button>
                         </div>
