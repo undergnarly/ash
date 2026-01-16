@@ -1,0 +1,60 @@
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay, EffectFade } from 'swiper/modules';
+import 'swiper/css';
+import 'swiper/css/effect-fade';
+
+const heroImages = [
+    '/images/ash-01.webp',
+    '/images/ash-02.webp',
+    '/images/ash-03.webp',
+    '/images/ash-04.webp',
+    '/images/ash-05.webp',
+    '/images/ash-06.webp',
+];
+
+export default function HeroSection() {
+    return (
+        <section className="relative h-dvh w-full snap-start overflow-hidden">
+            {/* Background Swiper */}
+            <Swiper
+                modules={[Autoplay, EffectFade]}
+                effect="fade"
+                autoplay={{ delay: 4000, disableOnInteraction: false }}
+                loop={true}
+                className="absolute inset-0 h-full w-full z-0"
+            >
+                {heroImages.map((img, index) => (
+                    <SwiperSlide key={index}>
+                        <img src={img} alt={`Hero ${index + 1}`} className="h-full w-full object-cover brightness-75" />
+                    </SwiperSlide>
+                ))}
+            </Swiper>
+
+            {/* Overlay Content */}
+            <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 lg:p-12 pointer-events-none">
+                {/* Top Logos */}
+                <div className="flex items-start gap-4 lg:gap-8 pt-4 lg:pt-8 pointer-events-auto">
+                    <img src="/images/logo-white.webp" alt="ASH Logo" className="w-24 lg:w-32 object-contain" />
+                    <img src="/images/nuanu-logo.svg" alt="Nuanu Logo" className="w-20 lg:w-28 object-contain" />
+                </div>
+
+                {/* Middle tagline */}
+                <div className="absolute top-1/3 left-6 lg:left-24 lg:top-1/2 -translate-y-1/2 max-w-xs lg:max-w-2xl drop-shadow-lg">
+                    <p className="text-white font-medium text-sm lg:text-xl leading-relaxed">
+                        Live music, fusion dining & creative events — a space to connect in Nuanu
+                    </p>
+                </div>
+
+                {/* Bottom Title using the gradient text style from original if possible, simplified here for black theme */}
+                <div className="flex items-end pb-8 lg:pb-12 pointer-events-auto">
+                    <h1 className="text-6xl lg:text-[8rem] font-bold tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-t from-white/80 to-white">
+                        EVENTS
+                    </h1>
+                </div>
+            </div>
+
+            {/* Decorative elements - Wings (Optional, adding for fidelity) */}
+            <img src="/images/wing-right.webp" alt="" className="absolute top-0 left-0 w-1/2 lg:w-auto -translate-y-1/4 -translate-x-1/4 opacity-80 pointer-events-none z-10 mix-blend-screen" />
+        </section>
+    );
+}

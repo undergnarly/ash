@@ -1,0 +1,29 @@
+@import "tailwindcss";
+
+@import url('https://fonts.googleapis.com/css2?family=Unbounded:wght@200..900&display=swap');
+
+@theme {
+    --font-sans: "Unbounded", sans-serif;
+    --color-black: #000000;
+    --color-white: #ffffff;
+
+    /* Reference colors from bubblescreen-new */
+    --color-primary: #000000;
+    --color-secondary: #88aab8;
+    --color-accent: #fa876b;
+    --color-dark: #000612;
+}
+
+body {
+    @apply bg-black text-white font-sans overflow-hidden;
+}
+
+/* Custom Utilities */
+.no-scrollbar::-webkit-scrollbar {
+    display: none;
+}
+
+.no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}

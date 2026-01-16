@@ -1,0 +1,9 @@
+<svg width="114" height="114" viewBox="0 0 114 114" fill="none" xmlns="http://www.w3.org/2000/svg">
+<path d="M19 23.75C15.4837 23.75 12.6875 26.5462 12.6875 30.0625V83.9375C12.6875 87.4538 15.4837 90.25 19 90.25H95C98.5163 90.25 101.313 87.4538 101.313 83.9375V30.0625C101.313 26.5462 98.5163 23.75 95 23.75H19ZM19 30.0625H95L57 53.5938L19 30.0625ZM19 37.375L54.1125 58.875C55.3375 59.6125 56.6625 59.6125 57.8875 58.875L95 37.375V83.9375H19V37.375Z" fill="url(#paint0_linear_email)"/>
+<defs>
+<linearGradient id="paint0_linear_email" x1="57" y1="90.25" x2="57" y2="23.75" gradientUnits="userSpaceOnUse">
+<stop stop-color="#675343"/>
+<stop offset="1" stop-color="#B8A49C"/>
+</linearGradient>
+</defs>
+</svg>
