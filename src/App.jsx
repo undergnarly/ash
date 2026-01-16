@@ -60,22 +60,27 @@ function App() {
         >
           <SwiperSlide className="h-full w-full overflow-hidden relative">
             <HeroSection />
+            <ScrollIndicator />
           </SwiperSlide>
 
           <SwiperSlide className="h-full w-full overflow-hidden relative">
             <EventsSection />
+            <ScrollIndicator />
           </SwiperSlide>
 
           <SwiperSlide className="h-full w-full overflow-hidden relative">
             <DailyProgramSection />
+            <ScrollIndicator />
           </SwiperSlide>
 
           <SwiperSlide className="h-full w-full overflow-hidden relative">
             <RestaurantSection />
+            <ScrollIndicator />
           </SwiperSlide>
 
           <SwiperSlide className="h-full w-full overflow-hidden relative">
             <HostYourEventSection />
+            <ScrollIndicator />
           </SwiperSlide>
 
           <SwiperSlide className="h-full w-full overflow-hidden relative">
