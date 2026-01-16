@@ -7,6 +7,7 @@ import 'swiper/css/pagination';
 // Components
 import Sidebar from './components/Sidebar';
 import MobileHeader from './components/MobileHeader';
+import ScrollIndicator from './components/ScrollIndicator';
 
 // Sections
 import HeroSection from './sections/HeroSection';

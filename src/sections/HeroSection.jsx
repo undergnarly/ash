@@ -30,6 +30,9 @@ export default function HeroSection() {
                 ))}
             </Swiper>
 
+            {/* Bottom Shade */}
+            <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-1 pointer-events-none" />
+
             {/* Overlay Content */}
             <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 lg:p-12 pointer-events-none">
                 {/* Top Logos */}
@@ -38,16 +41,14 @@ export default function HeroSection() {
                     <img src="/images/nuanu-logo.svg" alt="Nuanu Logo" className="w-20 lg:w-28 object-contain" />
                 </div>
 
-                {/* Middle tagline */}
-                <div className="absolute top-1/3 left-6 lg:left-24 lg:top-1/2 -translate-y-1/2 max-w-xs lg:max-w-2xl drop-shadow-lg">
-                    <p className="text-white font-medium text-sm lg:text-xl leading-relaxed">
-                        Live music, fusion dining & creative events — a space to connect in Nuanu
-                    </p>
-                </div>
-
-                {/* Bottom Title using the gradient text style from original if possible, simplified here for black theme */}
-                <div className="flex items-end pb-8 lg:pb-12 pointer-events-auto">
-                    <h1 className="text-6xl lg:text-[8rem] font-bold tracking-tighter leading-none text-transparent bg-clip-text bg-gradient-to-t from-white/80 to-white">
+                {/* Bottom Content (Tagline + Title) */}
+                <div className="flex flex-col items-start pb-8 lg:pb-12 pointer-events-auto space-y-4 lg:space-y-6">
+                    <div className="max-w-xs lg:max-w-3xl drop-shadow-lg">
+                        <p className="text-white font-medium text-sm lg:text-3xl leading-relaxed uppercase tracking-[0.15em]">
+                            Live music, fusion dining & creative events — a space to connect in Nuanu
+                        </p>
+                    </div>
+                    <h1 className="text-6xl lg:text-[12rem] font-bold tracking-tighter leading-[0.8] text-transparent bg-clip-text bg-gradient-to-t from-white/80 to-white">
                         EVENTS
                     </h1>
                 </div>
