@@ -11,30 +11,33 @@ const navItems = [
 
 export default function Sidebar({ activeIndex, onNavigate }) {
     return (
-        <aside className="hidden lg:flex flex-col w-24 h-full bg-black/50 backdrop-blur-md border-r border-white/10 z-50 items-center py-8">
+        <aside className="hidden lg:flex flex-col w-36 h-full bg-black/50 backdrop-blur-md border-r border-white/10 z-50 items-center py-8">
             {/* Logo */}
             <div className="mb-12">
-                <img src="/images/logo-white.webp" alt="ASH" className="w-12 h-auto" />
+                <img src="/images/logo-white.webp" alt="ASH" className="w-16 h-auto" />
             </div>
 
             {/* Nav Items */}
-            <nav className="flex-1 flex flex-col gap-8 justify-center">
+            <nav className="flex-1 flex flex-col gap-10 justify-center">
                 {navItems.map((item) => (
                     <button
                         key={item.label}
                         onClick={() => onNavigate(item.index)}
                         className={clsx(
-                            "flex flex-col items-center gap-2 group transition-all duration-300",
-                            activeIndex === item.index ? "text-accent" : "text-white/40 hover:text-white"
+                            "flex flex-col items-center gap-2 group transition-all duration-300 relative",
+                            activeIndex === item.index ? "text-white" : "text-white/40 hover:text-white"
                         )}
                     >
                         <div className={clsx(
-                            "p-3 rounded-full transition-all duration-300",
-                            activeIndex === item.index ? "bg-accent/10" : "bg-transparent group-hover:bg-white/5"
+                            "p-4 rounded-full transition-all duration-300",
+                            activeIndex === item.index ? "bg-white/10" : "bg-transparent group-hover:bg-white/5"
                         )}>
-                            <item.icon size={24} strokeWidth={1.5} />
+                            <item.icon size={28} strokeWidth={1.5} />
                         </div>
-                        <span className="text-[10px] font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity absolute translate-y-10 pointer-events-none">
+                        <span className={clsx(
+                            "text-[10px] font-medium tracking-widest transition-opacity absolute translate-y-12 pointer-events-none uppercase",
+                            activeIndex === item.index ? "opacity-100" : "opacity-0 group-hover:opacity-100"
+                        )}>
                             {item.label}
                         </span>
                     </button>

@@ -41,16 +41,16 @@ export default function HeroSection() {
                     <img src="/images/nuanu-logo.svg" alt="Nuanu Logo" className="w-20 lg:w-28 object-contain" />
                 </div>
 
-                {/* Bottom Content (Tagline + Title) */}
-                <div className="flex flex-col items-start pb-8 lg:pb-12 pointer-events-auto space-y-4 lg:space-y-6">
-                    <div className="max-w-xs lg:max-w-3xl drop-shadow-lg">
-                        <p className="text-white font-medium text-sm lg:text-3xl leading-relaxed uppercase tracking-[0.15em]">
-                            Live music, fusion dining & creative events — a space to connect in Nuanu
+                {/* Bottom Content (Title + Tagline) */}
+                <div className="flex flex-col items-start pb-12 lg:pb-20 lg:pl-12 pointer-events-auto max-w-4xl">
+                    <h1 className="text-5xl lg:text-[5rem] font-medium tracking-tight leading-tight text-white mb-1">
+                        Ash Nuanu: Events & Fusion Dining
+                    </h1>
+                    <div className="max-w-[585px] drop-shadow-lg">
+                        <p className="text-white/90 font-normal text-base lg:text-xl leading-relaxed">
+                            A unique space where culture, nature, and innovation thrive together, blending divine inspiration with harmonious living in the heart of Nuanu.
                         </p>
                     </div>
-                    <h1 className="text-6xl lg:text-[12rem] font-bold tracking-tighter leading-[0.8] text-transparent bg-clip-text bg-gradient-to-t from-white/80 to-white">
-                        EVENTS
-                    </h1>
                 </div>
             </div>
 
