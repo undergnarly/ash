@@ -34,7 +34,7 @@ export default function HeroSection() {
             <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-black/80 via-black/20 to-transparent z-1 pointer-events-none" />
 
             {/* Overlay Content */}
-            <div className="absolute inset-0 z-10 flex flex-col justify-between p-6 lg:p-12 pointer-events-none">
+            <div className="absolute inset-0 z-10 flex flex-col justify-end lg:justify-between p-6 lg:p-12 pointer-events-none">
                 {/* Top Logos */}
                 <div className="hidden lg:flex items-start gap-4 lg:gap-8 pt-4 lg:pt-8 pointer-events-auto">
                     <img src="/images/logo-white.webp" alt="ASH Logo" className="w-24 lg:w-32 object-contain" />
