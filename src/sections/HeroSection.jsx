@@ -43,7 +43,7 @@ export default function HeroSection() {
 
                 {/* Bottom Content (Title + Tagline) */}
                 <div className="flex flex-col items-start pb-12 lg:pb-20 lg:pl-12 pointer-events-auto max-w-4xl">
-                    <h1 className="text-[3rem] font-medium tracking-tight leading-loose lg:leading-tight text-white mb-2">
+                    <h1 className="text-[3rem] font-medium tracking-tight leading-tight text-white mb-2">
                         Ash Nuanu: Events & Fusion Dining
                     </h1>
                     <div className="max-w-[585px] drop-shadow-lg">
