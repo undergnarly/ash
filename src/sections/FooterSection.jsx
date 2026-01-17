@@ -10,9 +10,9 @@ const socials = [
 
 export default function FooterSection() {
     return (
-        <section className="h-full w-full flex flex-col items-center justify-center bg-[#eae4dd] text-black relative overflow-hidden">
+        <section className="h-full w-full flex flex-col items-center justify-center bg-zinc-950 text-white relative overflow-hidden">
             {/* Background Pattern */}
-            <div className="absolute inset-0 z-0 opacity-20 pointer-events-none">
+            <div className="absolute inset-0 z-0 opacity-5 pointer-events-none">
                 <img src="/images/visionarium-ornament.webp" alt="" className="w-full h-full object-cover" />
             </div>
 
@@ -20,39 +20,37 @@ export default function FooterSection() {
                 {/* Logo & Wings Section */}
                 <div className="relative mb-12 flex flex-col items-center">
                     <div className="relative">
-                        <img src="/images/egg-ash.webp" alt="ASH Egg" className="w-48 lg:w-64 z-10 relative" />
-                        <img src="/images/v-wing-right.webp" alt="" className="absolute -top-10 -left-20 w-40 lg:w-56 opacity-80 mix-blend-multiply rotate-[15deg]" />
-                        <img src="/images/v-wing-right.webp" alt="" className="absolute -top-10 -right-20 w-40 lg:w-56 opacity-80 mix-blend-multiply rotate-[-15deg] scale-x-[-1]" />
+                        <img src="/images/egg-ash.webp" alt="ASH Egg" className="w-48 lg:w-64 z-10 relative drop-shadow-2xl" />
+                        <img src="/images/v-wing-right.webp" alt="" className="absolute -top-10 -left-20 w-40 lg:w-56 opacity-60 rotate-[15deg]" />
+                        <img src="/images/v-wing-right.webp" alt="" className="absolute -top-10 -right-20 w-40 lg:w-56 opacity-60 rotate-[-15deg] scale-x-[-1]" />
                     </div>
                 </div>
 
                 {/* Social Card */}
-                <div className="bg-black/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-black/10 w-full max-w-md text-center shadow-xl">
+                <div className="bg-white/5 backdrop-blur-sm p-8 rounded-[2.5rem] border border-white/10 w-full max-w-md text-center shadow-xl">
                     <h3 className="text-2xl lg:text-3xl font-bold mb-6">Connect With Us</h3>
-                    <div className="grid grid-cols-4 gap-4 mb-6">
+                    <div className="grid grid-cols-5 gap-4 mb-6">
                         {socials.map((social, idx) => (
                             <a
                                 key={idx}
                                 href={social.href}
                                 target="_blank"
                                 rel="noreferrer"
-                                className="w-full aspect-square flex items-center justify-center rounded-2xl bg-white border border-black/5 shadow-sm hover:shadow-md hover:-translate-y-1 transition-all duration-300"
+                                className="w-full aspect-square flex items-center justify-center rounded-2xl bg-white/10 border border-white/20 hover:bg-white hover:text-black transition-all duration-300 hover:-translate-y-1"
                                 aria-label={social.label}
                             >
-                                <div className="text-black/70">
-                                    {social.icon}
-                                </div>
+                                {social.icon}
                             </a>
                         ))}
                     </div>
-                    <p className="text-sm text-black/60 font-medium">
+                    <p className="text-sm text-white/60 font-medium">
                         Reach out through any platform or email us directly!
                     </p>
                 </div>
 
                 {/* Smaller Map Section */}
                 <div className="mt-16 w-full max-w-4xl grid lg:grid-cols-2 gap-8 items-center">
-                    <div className="h-64 rounded-3xl overflow-hidden border border-black/10 shadow-lg">
+                    <div className="h-64 rounded-3xl overflow-hidden border border-white/10 shadow-lg">
                         <iframe
                             title="ASH Nuanu Map"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15779.317508688842!2d115.0977871!3d-8.6121406!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd2390145880001%3A0xe5493b808200f68d!2sASH%20at%20Nuanu!5e0!3m2!1sen!2sid!4v1701777000000!5m2!1sen!2sid"
@@ -63,7 +61,7 @@ export default function FooterSection() {
                     </div>
                     <div className="space-y-4">
                         <h4 className="text-xl font-bold">Find Us</h4>
-                        <p className="text-sm text-black/70 leading-relaxed font-medium">
+                        <p className="text-sm text-white/70 leading-relaxed font-medium">
                             Located within Nuanu Creative City.<br />
                             Take the electric shuttle from the guest parking direct to our door.
                         </p>
@@ -71,7 +69,7 @@ export default function FooterSection() {
                             href="https://maps.app.goo.gl/YourMapLink"
                             target="_blank"
                             rel="noreferrer"
-                            className="inline-flex items-center gap-2 text-sm font-bold border-b-2 border-black/20 pb-1 hover:border-black transition-all"
+                            className="inline-flex items-center gap-2 text-sm font-bold border-b-2 border-white/20 pb-1 hover:border-white transition-all"
                         >
                             Open in Google Maps <MapPin size={16} />
                         </a>
@@ -79,7 +77,7 @@ export default function FooterSection() {
                 </div>
             </div>
 
-            <div className="w-full py-8 px-6 text-center text-black/30 text-xs font-bold relative z-10 border-t border-black/5">
+            <div className="w-full py-8 px-6 text-center text-white/30 text-xs font-bold relative z-10 border-t border-white/5">
                 <p>© 2024 Ash Nuanu. Made with heart in Bali.</p>
             </div>
         </section>

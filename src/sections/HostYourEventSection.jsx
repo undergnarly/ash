@@ -33,11 +33,6 @@ export default function HostYourEventSection() {
                         CONTACT US
                     </a>
                 </div>
-
-                <div className="hidden lg:block lg:w-1/2 relative">
-                    <img src="/images/diamond.svg" alt="" className="absolute -top-20 left-10 w-24 opacity-50 animate-pulse" />
-                    <img src="/images/diamond.svg" alt="" className="absolute bottom-10 right-20 w-32 opacity-30 animate-pulse delay-700" />
-                </div>
             </div>
         </section>
     );

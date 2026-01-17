@@ -5,7 +5,6 @@ import 'swiper/css';
 import 'swiper/css/pagination';
 
 // Components
-import Sidebar from './components/Sidebar';
 import MobileHeader from './components/MobileHeader';
 import ScrollIndicator from './components/ScrollIndicator';
 
@@ -22,17 +21,8 @@ function App() {
   const swiperRef = useRef(null);
   const [activeIndex, setActiveIndex] = useState(0);
 
-  const handleNavigate = (index) => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideTo(index);
-    }
-  };
-
   return (
     <div className="flex h-dvh w-screen bg-black overflow-hidden font-sans selection:bg-accent selection:text-black">
-
-      {/* Desktop Sidebar */}
-      <Sidebar activeIndex={activeIndex} onNavigate={handleNavigate} />
 
       {/* Main Content Area */}
       <main className="flex-1 relative h-full w-full">
